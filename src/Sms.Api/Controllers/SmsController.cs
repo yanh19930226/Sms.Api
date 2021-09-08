@@ -1,0 +1,69 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Sms.Api.Model;
+using Sms.Api.Models;
+using Sms.Api.Service;
+using Sms.Api.Service.Models;
+using Sms.Api.ToolKits;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Sms.Api.Controllers
+{
+    /// <summary>
+    /// 短信接口
+    /// </summary>
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SmsController : ControllerBase
+    {
+        private readonly SmsService _smsService;
+
+        public SmsController(SmsService smsService)
+        {
+            _smsService = smsService;
+        }
+
+        /// <summary>
+        /// 获取短信记录
+        /// </summary>
+        /// <param name="id">主键</param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public ActionResult<SmsModel> Get(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return NotFound();
+            return _smsService.Get(id);
+        }
+
+        /// <summary>
+        /// 添加短信记录
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        //[HttpPost]
+        //public ActionResult Post([FromBody] List<PostModel> model)
+        //{
+        //    _smsService.Page(model.MapTo<List<PostModel>, List<AddSmsModel>>());
+          
+
+        //    return Ok();
+        //}
+
+        /// <summary>
+        /// 查询短信记录
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("_search")]
+        public ActionResult<List<SmsModel>> Post([FromBody] SearchModel model)
+        {
+            var res=_smsService.Search(model.MapTo<SearchModel, SearchSmsModel>());
+
+            return res;
+        }
+
+    }
+}

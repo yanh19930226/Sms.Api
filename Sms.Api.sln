@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "公共组件", "公共组件", "{B8F0CCB4-35E1-4A0E-98C2-0F00588C6893}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "消费服务", "消费服务", "{9AE743CD-86FE-480A-B16E-E53AD998F2F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "数据库实体", "数据库实体", "{D60575C8-0E75-4F8F-9E12-3409962F925E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "业务服务", "业务服务", "{12949330-76E5-4B5F-B4E3-091D118C2206}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "单元测试", "单元测试", "{AD284FBE-97AE-4A41-A05C-CC583D5206DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api", "src\Sms.Api\Sms.Api.csproj", "{02186336-C990-4427-9967-7D69CA3A7029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api.Sdk", "src\Sms.Api.Sdk\Sms.Api.Sdk.csproj", "{1FAAD899-1E11-4F2F-A2AC-786404CDEC1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api.Model", "src\Sms.Api.Model\Sms.Api.Model.csproj", "{C79B1B42-59D1-4F25-8925-562A92CA6CFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api.ToolKits", "src\Sms.Api.ToolKits\Sms.Api.ToolKits.csproj", "{4C70867D-2BA1-4020-87E9-3FD15C08A402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api.Service", "src\Sms.Api.Service\Sms.Api.Service.csproj", "{DC87C9C1-8199-498A-809F-A1DA68A7D6AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api.Bus", "src\Sms.Api.Bus\Sms.Api.Bus.csproj", "{106F8BB4-198F-453D-81A8-5AD2FEAF74FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api.Test", "src\Sms.Api.Test\Sms.Api.Test.csproj", "{A236A18E-FBBC-45D8-808D-47CFBAC64DED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "死信队列", "死信队列", "{7A24C546-B082-4EC4-8863-40E56690B3EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sms.Api.DeadLetterExchange", "src\Sms.Api.DeadLetterExchange\Sms.Api.DeadLetterExchange.csproj", "{D9E2E86A-6C9F-4AC4-9437-7A2375366D45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02186336-C990-4427-9967-7D69CA3A7029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02186336-C990-4427-9967-7D69CA3A7029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02186336-C990-4427-9967-7D69CA3A7029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02186336-C990-4427-9967-7D69CA3A7029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FAAD899-1E11-4F2F-A2AC-786404CDEC1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FAAD899-1E11-4F2F-A2AC-786404CDEC1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FAAD899-1E11-4F2F-A2AC-786404CDEC1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FAAD899-1E11-4F2F-A2AC-786404CDEC1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C79B1B42-59D1-4F25-8925-562A92CA6CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C79B1B42-59D1-4F25-8925-562A92CA6CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C79B1B42-59D1-4F25-8925-562A92CA6CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C79B1B42-59D1-4F25-8925-562A92CA6CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C70867D-2BA1-4020-87E9-3FD15C08A402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C70867D-2BA1-4020-87E9-3FD15C08A402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C70867D-2BA1-4020-87E9-3FD15C08A402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C70867D-2BA1-4020-87E9-3FD15C08A402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC87C9C1-8199-498A-809F-A1DA68A7D6AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC87C9C1-8199-498A-809F-A1DA68A7D6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC87C9C1-8199-498A-809F-A1DA68A7D6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC87C9C1-8199-498A-809F-A1DA68A7D6AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{106F8BB4-198F-453D-81A8-5AD2FEAF74FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106F8BB4-198F-453D-81A8-5AD2FEAF74FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106F8BB4-198F-453D-81A8-5AD2FEAF74FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106F8BB4-198F-453D-81A8-5AD2FEAF74FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A236A18E-FBBC-45D8-808D-47CFBAC64DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A236A18E-FBBC-45D8-808D-47CFBAC64DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A236A18E-FBBC-45D8-808D-47CFBAC64DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A236A18E-FBBC-45D8-808D-47CFBAC64DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9E2E86A-6C9F-4AC4-9437-7A2375366D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9E2E86A-6C9F-4AC4-9437-7A2375366D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9E2E86A-6C9F-4AC4-9437-7A2375366D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9E2E86A-6C9F-4AC4-9437-7A2375366D45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C79B1B42-59D1-4F25-8925-562A92CA6CFE} = {D60575C8-0E75-4F8F-9E12-3409962F925E}
+		{4C70867D-2BA1-4020-87E9-3FD15C08A402} = {B8F0CCB4-35E1-4A0E-98C2-0F00588C6893}
+		{DC87C9C1-8199-498A-809F-A1DA68A7D6AE} = {12949330-76E5-4B5F-B4E3-091D118C2206}
+		{106F8BB4-198F-453D-81A8-5AD2FEAF74FF} = {9AE743CD-86FE-480A-B16E-E53AD998F2F8}
+		{A236A18E-FBBC-45D8-808D-47CFBAC64DED} = {AD284FBE-97AE-4A41-A05C-CC583D5206DC}
+		{D9E2E86A-6C9F-4AC4-9437-7A2375366D45} = {7A24C546-B082-4EC4-8863-40E56690B3EA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D0F7339-4F3B-4B07-8548-B0BA956E7EA7}
+	EndGlobalSection
+EndGlobal

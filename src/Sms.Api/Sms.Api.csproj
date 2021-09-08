@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sms.Api.Model\Sms.Api.Model.csproj" />
+    <ProjectReference Include="..\Sms.Api.Service\Sms.Api.Service.csproj" />
+  </ItemGroup>
+
+
+</Project>
