@@ -8,6 +8,7 @@ using EasyNetQ.Scheduling;
 using NSwag.AspNetCore;
 using System.Reflection;
 using NJsonSchema;
+using System.Linq;
 
 namespace Sms.Api
 {
@@ -33,7 +34,37 @@ namespace Sms.Api
             });
             services.AddSingleton(new MongoRepository(_infrastructureConfig.Infrastructure.Mongodb));
             services.AddService();
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Sms.Api";
+                    document.Info.Description = "yande Sms.Api";
+                    document.Info.TermsOfService = "None";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "yande",
+                        Email = "891367701@qq.com",
+                        Url = "http://yande.buzz"
+                    };
+                    document.Info.License = new NSwag.OpenApiLicense
+                    {
+                        Name = "yande",
+                        Url = "http://yande.buzz"
+                    };
+                };
+            });
+            //services.AddOpenApiDocument(settings =>
+            //{
+            //    settings.AddSecurity("身份认证Token", Enumerable.Empty<string>(), new NSwag.OpenApiSecurityScheme()
+            //    {
+            //        Description = "JWT授权(数据将在请求头中进行传输) 直接在下框中输入Bearer {token}（注意两者之间是一个空格）",
+            //        Name = "Authorization",
+            //        In = NSwag.OpenApiSecurityApiKeyLocation.Header,
+            //        Type = NSwag.OpenApiSecuritySchemeType.ApiKey
+            //    });
+            //});
             services.AddControllers();
         }
 
