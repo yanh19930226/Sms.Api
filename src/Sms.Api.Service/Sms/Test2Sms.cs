@@ -11,6 +11,7 @@ namespace Sms.Api.Service.Sms
         public Test2Sms(IConfiguration configuration) : base(configuration)
         {
             var config = configuration.Get<SmsConfig>();
+            MaxCount = config.Sms.TestSms2Config.MaxCount;
         }
         public override bool SendSMS(string phone, string content, string signName)
         {

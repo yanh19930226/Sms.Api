@@ -1,15 +1,12 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
-    }
-  },
-  "AllowedHosts": "*",
   "Infrastructure": {
     "Mongodb": "mongodb://127.0.0.1:27017",
     "RabbitMQ": "host=127.0.0.1;username=guset;password=guset"
+  },
+  "Server": {
+    "Name": "Sms.Api.Bus",
+    "DisplayName": "短信消费服务",
+    "Description": "短信消费服务"
   },
   "Sms": {
     "SignName": "yande",

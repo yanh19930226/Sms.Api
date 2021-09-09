@@ -4,6 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Work\ERP\Sms.Api\src\Sms.Api\Sms.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyNetQ.DI.Microsoft" Version="3.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="5.0.0" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.13.2" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Sms.Api.Model\Sms.Api.Model.csproj" />
     <ProjectReference Include="..\Sms.Api.Service\Sms.Api.Service.csproj" />

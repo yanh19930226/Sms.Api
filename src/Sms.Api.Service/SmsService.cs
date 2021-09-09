@@ -11,47 +11,10 @@ namespace Sms.Api.Service
     public class SmsService
     {
         private readonly MongoRepository _mongoProxy;
-        public SmsService()
+        public SmsService(MongoRepository mongoProxy)
         {
-
+            _mongoProxy = mongoProxy;
         }
-
-        #region Private
-
-        /// <summary>
-        /// 发送成功
-        /// </summary>
-        /// <param name="model"></param>
-        private void Success(SmsModel model)
-        {
-            model.Status = SmsEnums.SmsStatus.成功;
-            model.CreateDateTime = DateTime.Now;
-            _mongoProxy.Add(MongoKey.SmsDataBase, MongoKey.SmsCollection + "_" + DateTime.Now.ToString("yyyyMM"), model);
-        }
-
-        /// <summary>
-        /// 发送失败
-        /// </summary>
-        /// <param name="model"></param>
-        private void Fail(SmsModel model)
-        {
-            model.Status = SmsEnums.SmsStatus.失败;
-            model.CreateDateTime = DateTime.Now;
-            _mongoProxy.Add(MongoKey.SmsDataBase, MongoKey.SmsCollection + "_" + DateTime.Now.ToString("yyyyMM"), model);
-        }
-
-        /// <summary>
-        /// 获取页数
-        /// </summary>
-        /// <param name="phoneCount"></param>
-        /// <param name="maxCount"></param>
-        /// <returns></returns>
-        private int GetPageCount(int phoneCount, int maxCount)
-        {
-            return (int)Math.Ceiling(phoneCount / (double)maxCount);
-        } 
-
-        #endregion
 
         /// <summary>
         ///Id获取短信记录
@@ -100,6 +63,6 @@ namespace Sms.Api.Service
 
             return _mongoProxy.ToList(builder);
         }
-       
+
     }
 }

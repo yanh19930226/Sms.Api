@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EasyNetQ;
+using EasyNetQ.Scheduling;
+using Microsoft.AspNetCore.Mvc;
 using Sms.Api.Model;
 using Sms.Api.Models;
 using Sms.Api.Service;
 using Sms.Api.Service.Models;
+using Sms.Api.Service.Sms;
 using Sms.Api.ToolKits;
 using System;
 using System.Collections.Generic;
@@ -19,11 +22,58 @@ namespace Sms.Api.Controllers
     public class SmsController : ControllerBase
     {
         private readonly SmsService _smsService;
+        private readonly SmsFactory _smsFactory;
+        private readonly IBus _bus;
 
-        public SmsController(SmsService smsService)
+        public SmsController(SmsService smsService, SmsFactory smsFactory, IBus bus)
         {
             _smsService = smsService;
+            _smsFactory = smsFactory;
+            _bus = bus;
         }
+
+        #region Private
+
+        /// <summary>
+        /// 及时发送
+        /// </summary>
+        private void ImmediatelyPublish(List<PostModel> postModels)
+        {
+            postModels.Where(a => a.TimeSendDateTime == null).ToList().MapTo<List<PostModel>, List<SmsQueueModel>>()
+                .ForEach(
+                    item =>
+                    {
+                        _bus.Publish(item, SmsQueueModelKey.Topic);
+                    });
+        }
+
+        /// <summary>
+        /// 定时发送
+        /// </summary>
+        private void TimingPublish(List<PostModel> postModels)
+        {
+            postModels.Where(a => a.TimeSendDateTime != null).ToList()
+                .ForEach(
+                    item =>
+                    {
+                        _bus.FuturePublish(item.TimeSendDateTime.Value.ToUniversalTime(), item.MapTo<PostModel, SmsQueueModel>(),
+                            SmsQueueModelKey.Topic);
+                    });
+        }
+
+        /// <summary>
+        /// 获取页数
+        /// </summary>
+        /// <param name="phoneCount"></param>
+        /// <param name="maxCount"></param>
+        /// <returns></returns>
+        private int GetPageCount(int phoneCount, int maxCount)
+        {
+            return (int)Math.Ceiling(phoneCount / (double)maxCount);
+        }
+
+        #endregion
+
 
         /// <summary>
         /// 获取短信记录
@@ -43,14 +93,37 @@ namespace Sms.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        //[HttpPost]
-        //public ActionResult Post([FromBody] List<PostModel> model)
-        //{
-        //    _smsService.Page(model.MapTo<List<PostModel>, List<AddSmsModel>>());
-          
+        [HttpPost]
+        public ActionResult Post([FromBody] List<PostModel> model)
+        {
+            var pageRes = new List<PostModel>();
 
-        //    return Ok();
-        //}
+            foreach (var sms in model)
+            {
+                var maxCount = _smsFactory.Create(sms.Type).MaxCount;
+                sms.Mobiles = sms.Mobiles.Distinct().ToList();
+                var page = GetPageCount(sms.Mobiles.Count, maxCount);
+                var index = 0;
+                do
+                {
+                    var toBeSendPhones = sms.Mobiles.Skip(index * maxCount).Take(maxCount).ToList();
+                    pageRes.Add(new PostModel
+                    {
+                        Content = sms.Content,
+                        Mobiles = toBeSendPhones,
+                        TimeSendDateTime = sms.TimeSendDateTime,
+                        Type = sms.Type
+                    });
+                    index++;
+                } while (index < page);
+            }
+
+            ImmediatelyPublish(pageRes);
+
+            TimingPublish(pageRes);
+
+            return Ok();
+        }
 
         /// <summary>
         /// 查询短信记录

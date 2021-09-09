@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Sms.Api.Service.Sms
 {
-    public class SmsFactory
+    public class SmsFactory: IService
     {
         private readonly Test1Sms _test1Sms;
         private readonly Test2Sms _test2Sms;

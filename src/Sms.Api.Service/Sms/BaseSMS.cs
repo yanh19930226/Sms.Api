@@ -5,9 +5,16 @@ using System.Text;
 
 namespace Sms.Api.Service.Sms
 {
-    public abstract class BaseSMS
+    /// <summary>
+    /// 短信基本配置
+    /// </summary>
+    public abstract class BaseSMS: IService
     {
         protected readonly IConfiguration Configuration;
+        /// <summary>
+        /// 最大发送次数
+        /// </summary>
+        public int MaxCount { get; set; }
 
         protected BaseSMS(IConfiguration configuration)
         {

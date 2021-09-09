@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sms.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Sms.Api.Controllers.SmsController">
+            <summary>
+            短信接口
+            </summary>
+        </member>
+        <member name="M:Sms.Api.Controllers.SmsController.ImmediatelyPublish(System.Collections.Generic.List{Sms.Api.Models.PostModel})">
+            <summary>
+            及时发送
+            </summary>
+        </member>
+        <member name="M:Sms.Api.Controllers.SmsController.TimingPublish(System.Collections.Generic.List{Sms.Api.Models.PostModel})">
+            <summary>
+            定时发送
+            </summary>
+        </member>
+        <member name="M:Sms.Api.Controllers.SmsController.GetPageCount(System.Int32,System.Int32)">
+            <summary>
+            获取页数
+            </summary>
+            <param name="phoneCount"></param>
+            <param name="maxCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sms.Api.Controllers.SmsController.Get(System.String)">
+            <summary>
+            获取短信记录
+            </summary>
+            <param name="id">主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sms.Api.Controllers.SmsController.Post(System.Collections.Generic.List{Sms.Api.Models.PostModel})">
+            <summary>
+            添加短信记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sms.Api.Controllers.SmsController.Post(Sms.Api.Models.SearchModel)">
+            <summary>
+            查询短信记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sms.Api.Models.PostModel">
+            <summary>
+            短信发送
+            </summary>
+        </member>
+        <member name="P:Sms.Api.Models.PostModel.Type">
+            <summary>
+            运营商
+            </summary>
+        </member>
+        <member name="P:Sms.Api.Models.PostModel.Mobiles">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Sms.Api.Models.PostModel.TimeSendDateTime">
+            <summary>
+            发送时间
+            </summary>
+        </member>
+        <member name="P:Sms.Api.Models.SearchModel.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:Sms.Api.Models.SearchModel.Type">
+            <summary>
+            运营商
+            </summary>
+        </member>
+        <member name="P:Sms.Api.Models.SearchModel.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:Sms.Api.Models.SearchModel.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+    </members>
+</doc>

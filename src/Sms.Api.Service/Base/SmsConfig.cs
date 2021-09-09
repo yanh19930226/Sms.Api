@@ -20,6 +20,7 @@ namespace Sms.Api.Service.Base
 
     public class TestSms1Config
     {
+        public int MaxCount { get; set; }
         public int Age { get; set; }
 
         public string Name { get; set; }
@@ -27,6 +28,7 @@ namespace Sms.Api.Service.Base
 
     public class TestSms2Config
     {
+        public int MaxCount { get; set; }
         public int Age { get; set; }
 
         public string Name { get; set; }
@@ -34,6 +36,7 @@ namespace Sms.Api.Service.Base
 
     public class TestSms3Config
     {
+        public int MaxCount { get; set; }
         public int Age { get; set; }
 
         public string Name { get; set; }
