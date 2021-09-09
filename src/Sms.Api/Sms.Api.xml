@@ -4,10 +4,17 @@
         <name>Sms.Api</name>
     </assembly>
     <members>
-        <member name="T:Sms.Api.Controllers.SmsController">
+        <member name="M:Sms.Api.Controllers.IdentityController.Get">
             <summary>
-            短信接口
+            测试
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sms.Api.Controllers.IdentityController.Token">
+            <summary>
+            Token
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Sms.Api.Controllers.SmsController.ImmediatelyPublish(System.Collections.Generic.List{Sms.Api.Models.PostModel})">
             <summary>
@@ -87,6 +94,38 @@
             <summary>
             手机号
             </summary>
+        </member>
+        <member name="P:Sms.Api.RestfulData.code">
+            <summary>
+            <![CDATA[错误码]]>
+            </summary>
+        </member>
+        <member name="P:Sms.Api.RestfulData.message">
+             <summary>
+            <![CDATA[消息]]>
+             </summary>
+        </member>
+        <member name="P:Sms.Api.RestfulData.url">
+            <summary>
+            <![CDATA[相关的链接帮助地址]]>
+            </summary>
+        </member>
+        <member name="T:Sms.Api.RestfulData`1">
+             <summary>
+            
+             </summary>
+             <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Sms.Api.RestfulData`1.data">
+            <summary>
+            <![CDATA[数据]]>
+            </summary>
+        </member>
+        <member name="T:Sms.Api.RestfulArray`1">
+            <summary>
+            <![CDATA[返回数组]]>
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
     </members>
 </doc>

@@ -1,6 +1,8 @@
 ﻿using EasyNetQ;
 using EasyNetQ.Scheduling;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 using Sms.Api.Model;
 using Sms.Api.Models;
 using Sms.Api.Service;
@@ -14,11 +16,11 @@ using System.Threading.Tasks;
 
 namespace Sms.Api.Controllers
 {
-    /// <summary>
-    /// 短信接口
-    /// </summary>
-    [Route("api/[controller]")]
+   
+    [Route("api/sms")]
     [ApiController]
+    [OpenApiTag("短信接口", Description = "短信接口")]
+    [Authorize]
     public class SmsController : ControllerBase
     {
         private readonly SmsService _smsService;
@@ -92,7 +94,7 @@ namespace Sms.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("msg")]
         public ActionResult Post([FromBody] List<PostModel> model)
         {
             var pageRes = new List<PostModel>();
@@ -129,13 +131,12 @@ namespace Sms.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost("_search")]
+        [HttpPost("search")]
         public ActionResult<List<SmsModel>> Post([FromBody] SearchModel model)
         {
             var res=_smsService.Search(model.MapTo<SearchModel, SearchSmsModel>());
 
             return res;
         }
-
     }
 }
