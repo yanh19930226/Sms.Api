@@ -1,5 +1,5 @@
-﻿using Sikiro.Nosql.Mongo;
-using Sms.Api.Model;
+﻿using Sms.Api.Model;
+using Sms.Api.Mongo;
 using Sms.Api.Service.Models;
 using Sms.Api.ToolKits;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Sms.Api.Service
 {
-    public class SmsService
+    public class SmsService:IService
     {
         private readonly MongoRepository _mongoProxy;
         public SmsService(MongoRepository mongoProxy)

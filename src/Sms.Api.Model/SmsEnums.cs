@@ -11,9 +11,9 @@ namespace Sms.Api.Model
         /// </summary>
         public enum SmsType
         {
-            Test1Sms,
-            Test2Sms,
-            Test3Sms
+            Test1Sms=1,
+            Test2Sms=2,
+            Test3Sms=3
         }
         /// <summary>
         /// 发送状态

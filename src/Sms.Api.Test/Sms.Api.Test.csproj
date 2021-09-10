@@ -19,4 +19,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sms.Api.Sdk\Sms.Api.Sdk.csproj" />
+  </ItemGroup>
+
 </Project>

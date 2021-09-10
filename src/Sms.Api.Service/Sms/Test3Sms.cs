@@ -15,7 +15,7 @@ namespace Sms.Api.Service.Sms
         }
         public override bool SendSMS(string phone, string content, string signName)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

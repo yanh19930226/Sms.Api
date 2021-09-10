@@ -5,7 +5,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using PeterKottas.DotNetCore.WindowsService;
 using PeterKottas.DotNetCore.WindowsService.Configurators.Service;
 using PeterKottas.DotNetCore.WindowsService.Interfaces;
-using Sikiro.Nosql.Mongo;
+using Sms.Api.Mongo;
 using Sms.Api.Service;
 using System;
 using System.Collections.Generic;

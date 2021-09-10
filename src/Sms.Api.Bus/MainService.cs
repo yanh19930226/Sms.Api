@@ -1,9 +1,10 @@
 ﻿using EasyNetQ;
 using EasyNetQ.Scheduling;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using PeterKottas.DotNetCore.WindowsService.Interfaces;
-using Sikiro.Nosql.Mongo;
 using Sms.Api.Model;
+using Sms.Api.Mongo;
 using Sms.Api.Service.Sms;
 using Sms.Api.ToolKits;
 using System;
@@ -29,11 +30,20 @@ namespace Sms.Api.Bus
         }
         public void Send(SmsModel item)
         {
-            var isSuccess = _smsFactory.Create(item.Type).SendSMS(item.Mobiles, item.Content, _configuration["Sms:SignName"]);
-            if (isSuccess)
-                Success(item);
-            else
-                Fail(item);
+            string Str = JsonConvert.SerializeObject(item);
+            Console.WriteLine("消息" + Str);
+            try
+            {
+                var isSuccess = _smsFactory.Create(item.Type).SendSMS(item.Mobiles, item.Content, _configuration["Sms:SignName"]);
+                if (isSuccess)
+                    Success(item);
+                else
+                    Fail(item);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         private void ReSend(SmsModel smsModel)
         {
@@ -46,14 +56,14 @@ namespace Sms.Api.Bus
         {
             model.Status = SmsEnums.SmsStatus.成功;
             model.CreateDateTime = DateTime.Now;
-            _mongoProxy.Add(MongoKey.SmsDataBase, MongoKey.SmsCollection + "_" + DateTime.Now.ToString("yyyyMM"), model);
+            _mongoProxy.Add(MongoKey.SmsDataBase, MongoKey.SmsCollection, model);
         }
 
         private void Fail(SmsModel model)
         {
             model.Status = SmsEnums.SmsStatus.失败;
             model.CreateDateTime = DateTime.Now;
-            _mongoProxy.Add(MongoKey.SmsDataBase, MongoKey.SmsCollection + "_" + DateTime.Now.ToString("yyyyMM"), model);
+            _mongoProxy.Add(MongoKey.SmsDataBase, MongoKey.SmsCollection, model);
         }
         public void Start()
         {
@@ -62,7 +72,7 @@ namespace Sms.Api.Bus
             _bus.Subscribe<SmsQueueModel>("", msg =>
             {
                 var sms = msg.MapTo<SmsQueueModel, SmsModel>();
-
+               
                 try
                 {
                    Send(sms);

@@ -75,6 +75,11 @@
             发送时间
             </summary>
         </member>
+        <member name="T:Sms.Api.Models.SearchModel">
+            <summary>
+            SearchModel
+            </summary>
+        </member>
         <member name="P:Sms.Api.Models.SearchModel.Content">
             <summary>
             内容

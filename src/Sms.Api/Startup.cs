@@ -3,16 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Sikiro.Nosql.Mongo;
 using EasyNetQ.Scheduling;
-using NSwag.AspNetCore;
-using System.Reflection;
-using NJsonSchema;
 using System.Linq;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using System;
+using Sms.Api.Mongo;
 
 namespace Sms.Api
 {

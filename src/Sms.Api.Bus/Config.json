@@ -1,12 +1,12 @@
 {
   "Infrastructure": {
     "Mongodb": "mongodb://127.0.0.1:27017",
-    "RabbitMQ": "host=127.0.0.1;username=guset;password=guset"
+    "RabbitMQ": "host=127.0.0.1"
   },
   "Server": {
-    "Name": "Sms.Api.Bus",
-    "DisplayName": "短信消费服务",
-    "Description": "短信消费服务"
+    "Name": "SmsBus",
+    "DisplayName": "SmsBus",
+    "Description": "SmsBus"
   },
   "Sms": {
     "SignName": "yande",

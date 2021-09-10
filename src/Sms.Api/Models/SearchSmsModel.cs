@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sms.Api.Models
 {
+    /// <summary>
+    /// SearchModel
+    /// </summary>
     public class SearchModel
     {
         /// <summary>
