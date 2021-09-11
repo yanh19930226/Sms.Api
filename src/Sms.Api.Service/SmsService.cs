@@ -23,7 +23,7 @@ namespace Sms.Api.Service
         /// <returns></returns>
         public SmsModel Get(string id)
         {
-            return _mongoProxy.Get<SmsModel>(a => a.Id.ToString() == id);
+            return _mongoProxy.Get<SmsModel>(a => a.Id== id);
         }
 
         /// <summary>
